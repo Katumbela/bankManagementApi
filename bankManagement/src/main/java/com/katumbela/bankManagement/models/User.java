@@ -21,6 +21,7 @@ import lombok.Setter;
 public class User {
     public interface CreateUser {
     }
+
     public interface UpdateUser {
     }
 
