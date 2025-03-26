@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -42,6 +44,12 @@ public class User {
 
     @Column(name = "phone", nullable = true)
     private String phone;
+
+    @OneToOne
+    @NotEmpty
+    @Size(min = 6, max = 20)
+    @JoinColumn(name="account_id")
+    private Account account;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(name = "password", nullable = false)

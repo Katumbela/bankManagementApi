@@ -2,6 +2,7 @@ package com.katumbela.bankManagement.models;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,8 +30,8 @@ public class Account {
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
 
-    @OneToMany(mappedBy = "account")
-    private Transaction transactions;
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Transaction> transactions;
 
     @Column(name = "account_number", unique = true, nullable = false)
     private String accountNumber;
@@ -44,7 +45,7 @@ public class Account {
     @Column(name = "account_balance", nullable = false)
     private String accountBalance;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "account")
     private User user;
 
     public Account(String accountNumber, String accountType, String accountStatus, String accountBalance) {
