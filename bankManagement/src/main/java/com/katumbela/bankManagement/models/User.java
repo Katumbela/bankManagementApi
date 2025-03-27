@@ -13,12 +13,10 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 @Entity
-@Getter
-@Setter
+@Data
 @Table(name = User.USER_TABLE)
 public class User {
     public interface CreateUser {
@@ -48,7 +46,7 @@ public class User {
     @OneToOne
     @NotEmpty
     @Size(min = 6, max = 20)
-    @JoinColumn(name="account_id")
+    @JoinColumn(name = "account_id")
     private Account account;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
