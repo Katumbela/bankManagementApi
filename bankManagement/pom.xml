@@ -59,6 +59,19 @@
 			</artifactId>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-api -->
+		<!--
+		<dependency>
+		<groupId>
+		io.jsonwebtoken
+		</groupId>
+		<artifactId>
+		jjwt-api
+		</artifactId>
+		<version>
+		0.12.6
+		</version>
+		</dependency>
+		-->
 		<dependency>
 			<groupId>
 				io.jsonwebtoken
@@ -67,7 +80,7 @@
 				jjwt-api
 			</artifactId>
 			<version>
-				0.12.6
+				0.11.5
 			</version>
 		</dependency>
 		<dependency>
@@ -80,6 +93,23 @@
 			<version>
 				0.11.5
 			</version>
+			<scope>
+				runtime
+			</scope>
+		</dependency>
+		<dependency>
+			<groupId>
+				io.jsonwebtoken
+			</groupId>
+			<artifactId>
+				jjwt-jackson
+			</artifactId>
+			<version>
+				0.11.5
+			</version>
+			<scope>
+				runtime
+			</scope>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-oauth2-client -->
 		<dependency>
@@ -182,6 +212,63 @@
 			<scope>
 				test
 			</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-oauth2-resource-server -->
+		<dependency>
+			<groupId>
+				org.springframework.security
+			</groupId>
+			<artifactId>
+				spring-security-oauth2-resource-server
+			</artifactId>
+			<version>
+				6.4.4
+			</version>
+		</dependency>
+		<!-- Your existing dependencies -->
+		<dependency>
+			<groupId>
+				org.springframework.boot
+			</groupId>
+			<artifactId>
+				spring-boot-starter-security
+			</artifactId>
+		</dependency>
+		<!-- Your existing dependencies -->
+		<dependency>
+			<groupId>
+				org.springframework.security
+			</groupId>
+			<artifactId>
+				spring-security-oauth2-authorization-server
+			</artifactId>
+			<version>
+				1.2.1
+			</version>
+		</dependency>
+		<!-- Add iText for PDF generation -->
+		<dependency>
+			<groupId>
+				com.itextpdf
+			</groupId>
+			<artifactId>
+				itextpdf
+			</artifactId>
+			<version>
+				5.5.13.3
+			</version>
+		</dependency>
+		<!-- Add OpenAPI/Swagger for API documentation -->
+		<dependency>
+			<groupId>
+				org.springdoc
+			</groupId>
+			<artifactId>
+				springdoc-openapi-starter-webmvc-ui
+			</artifactId>
+			<version>
+				2.4.0
+			</version>
 		</dependency>
 	</dependencies>
 	<build>

@@ -88,7 +88,24 @@ curl -X POST "http://localhost:8080/oauth/token" \
 
 ---
 
+
+
+## Features
+
+ These changes should give you a working Bank Management API with Open Banking features. The implementation includes:
+
+User authentication and authorization with JWT
+Account management
+Transaction functionality (transfers by account, email, username)
+PDF statement generation
+Open Banking with OAuth2 for third-party integrations
+Swagger/OpenAPI documentation
+Error handling
+Security configuration
+
+
 ## 👨‍💻 Autor  
 Desenvolvido por **João Afonso Katombela**. Conecte-se comigo no [LinkedIn](https://www.linkedin.com/in/joao-afonso-katumbela) 🚀.
 ```
  
+

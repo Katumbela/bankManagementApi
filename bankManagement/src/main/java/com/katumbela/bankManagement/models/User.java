@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -32,20 +33,33 @@ public class User {
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
 
+    @Column(name = "full_name", nullable = false)
+    @NotNull(groups = { CreateUser.class })
+    @NotEmpty(groups = { CreateUser.class })
+    private String fullName;
+
     @Column(name = "username", unique = true, nullable = false, length = 100)
     @NotNull(groups = { CreateUser.class, UpdateUser.class })
     @NotEmpty(groups = { CreateUser.class, UpdateUser.class })
     @Size(min = 3, max = 100, groups = { CreateUser.class, UpdateUser.class })
     private String username;
 
+    @Column(name = "email", unique = true, nullable = false)
+    @NotNull(groups = { CreateUser.class })
+    @NotEmpty(groups = { CreateUser.class })
+    @Email(groups = { CreateUser.class, UpdateUser.class })
     private String email;
 
     @Column(name = "phone", nullable = true)
     private String phone;
+    
+    @Column(name = "address", nullable = true)
+    private String address;
+    
+    @Column(name = "document_id", nullable = true)
+    private String documentId;
 
     @OneToOne
-    @NotEmpty
-    @Size(min = 6, max = 20)
     @JoinColumn(name = "account_id")
     private Account account;
 
@@ -59,11 +73,11 @@ public class User {
     public User() {
     }
 
-    public User(String username, String email, String phone, String password) {
+    public User(String fullName, String username, String email, String phone, String password) {
+        this.fullName = fullName;
         this.username = username;
         this.email = email;
         this.phone = phone;
         this.password = password;
     }
-
 }

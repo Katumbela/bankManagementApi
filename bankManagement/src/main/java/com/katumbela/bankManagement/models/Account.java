@@ -1,13 +1,18 @@
 package com.katumbela.bankManagement.models;
 
+import java.math.BigDecimal;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -22,7 +27,6 @@ public class Account {
     public static final String TABLE_NAME = "accounts";
 
     public Account() {
-
     }
 
     @Id
@@ -31,6 +35,7 @@ public class Account {
     private Long id;
 
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<Transaction> transactions;
 
     @Column(name = "account_number", unique = true, nullable = false)
@@ -42,17 +47,17 @@ public class Account {
     @Column(name = "account_status", nullable = false)
     private String accountStatus;
 
-    @Column(name = "account_balance", nullable = false)
-    private String accountBalance;
+    @Column(name = "account_balance", nullable = false, precision = 19, scale = 4)
+    private BigDecimal accountBalance;
 
     @OneToOne(mappedBy = "account")
+    @JsonIgnore
     private User user;
 
-    public Account(String accountNumber, String accountType, String accountStatus, String accountBalance) {
+    public Account(String accountNumber, String accountType, String accountStatus, BigDecimal accountBalance) {
         this.accountNumber = accountNumber;
         this.accountType = accountType;
         this.accountStatus = accountStatus;
         this.accountBalance = accountBalance;
     }
-
 }
