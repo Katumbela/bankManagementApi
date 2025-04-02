@@ -24,6 +24,9 @@ public class AccountService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private AccountNumberUtil accountNumberUtil;
+
     public List<Account> findAll() {
         return accountRepository.findAll();
     }
@@ -78,13 +81,7 @@ public class AccountService {
     }
 
     public String generateAccountNumber() {
-        // Generate a random 10-digit account number
-        Random random = new Random();
-        StringBuilder accountNumber = new StringBuilder();
-        for (int i = 0; i < 10; i++) {
-            accountNumber.append(random.nextInt(10));
-        }
-        return accountNumber.toString();
+        return accountNumberUtil.generateAccountNumber();
     }
 
     @Transactional
